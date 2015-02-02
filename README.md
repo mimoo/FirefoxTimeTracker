@@ -44,6 +44,7 @@ track days or periods? show tracking per periods. Create a new period if nothing
 ## Graphs
 
 * make beautiful graphs
+* the graph page shouldn't be logged...
 
 ## Storage
 

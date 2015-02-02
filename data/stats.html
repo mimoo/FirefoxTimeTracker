@@ -1,1 +1,70 @@
-hello
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FirefoxTimeTracker | Stastistics</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- icons -->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <!-- google font -->
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+    <!-- js -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.min.js"></script>
+
+    <!-- custom CSS -->
+    <style type="text/css">
+      body{
+        background-color: #FFF;
+        margin-bottom:20px;
+        font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+        margin-bottom: 0;
+      }
+      h1, h2, h3, h4{
+          margin-top: 0;
+        font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+      }
+      #plot{
+      	width:700px;
+      }
+      #placeholder{
+      	width:700px;
+      }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="row">
+              <div class="col-xs-12">
+              	<h1>Statistics</h1>
+              </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div id="plot"></div>
+        <div id="placeholder"></div>
+    </main>
+
+	<script type="text/javascript">
+	$(function() {
+		// stupid tests
+		var d2 = [[0, 3], [4, 8], [8, 5], [9, 13]];
+		var d3 = [[0, 12], [7, 12], null, [7, 2.5], [12, 2.5]];
+
+		$.plot("#placeholder", [ d2, d3 ]);
+	})
+	</script>
+
+</body>
+
+</html>
