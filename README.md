@@ -29,3 +29,5 @@ track days or periods? show tracking per periods. Create a new period if nothing
 
 * if a window is closed stop logging everything
 * if a window is open, log current_tab
+
+> **CLOSE**: Event emitted when a window is closed. You can't always rely on receiving the close event for every open window. In particular, if the user quits the browser then it's possible that your add-on will be unloaded before all windows are closed.
