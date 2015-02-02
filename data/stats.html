@@ -13,10 +13,6 @@
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <!-- google font -->
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
-    <!-- js -->
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.min.js"></script>
 
     <!-- custom CSS -->
     <style type="text/css">
@@ -30,42 +26,50 @@
           margin-top: 0;
         font-family: 'Open Sans', Helvetica, Arial, sans-serif;
       }
-      #plot{
-      	width:700px;
+      .container{
+      	max-width:700px;
       }
-      #placeholder{
-      	width:700px;
+      #today_pie{
+      	width:100%
       }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="container">
-            <div class="row">
-              <div class="col-xs-12">
-              	<h1>Statistics</h1>
-              </div>
-            </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+          	<h1>Statistics</h1>
+          </div>
         </div>
+      </div>
     </header>
 
     <main>
-        <div id="plot"></div>
-        <div id="placeholder"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-md-6">
+            <h1>Today</h1>
+            <table id="today" class="table table-striped">
+              <thead>
+                <tr>
+                  <th>%</th>
+                  <th>domain</th>
+                  <th>time</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <div id="today_pie"></div>
+          </div>
+        </div>
+      </div>
     </main>
-
-	<script type="text/javascript">
-	$(function() {
-		alert(Storage.length)
-		// stupid tests
-		var d2 = [[0, 3], [4, 8], [8, 5], [9, 13]];
-		var d3 = [[0, 12], [7, 12], null, [7, 2.5], [12, 2.5]];
-
-		$.plot("#placeholder", [ d2, d3 ]);
-	})
-	</script>
-
+    
 </body>
 
 </html>

@@ -36,6 +36,7 @@ track days or periods? show tracking per periods. Create a new period if nothing
 ## Track time correctly
 
 * detect when firefox is closing and log before it closes
+* do we really need to save every 5 seconds? -> maybe we should stop this and only save when we switch tab.
 
 ## Extract real domain
 
