@@ -33,6 +33,10 @@ track days or periods? show tracking per periods. Create a new period if nothing
 
 # To Do List
 
+## Track time correctly
+
+* detect when firefox is closing and log before it closes
+
 ## Extract real domain
 
 * remove subdomain in get_host function
@@ -41,6 +45,12 @@ track days or periods? show tracking per periods. Create a new period if nothing
 
 * make beautiful graphs
 
-## Save all this info somewhere
+## Storage
 
 * save info online? on user's disk?
+
+## Correct javascript?
+
+* is `=== undefined` the right way to check for the object existence? It seems to work.
+
+* Is storing the logs in an object the best way? It seems cumbersome to declare a new object for the date and a new object for the host everytime
