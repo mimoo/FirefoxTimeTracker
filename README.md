@@ -48,9 +48,8 @@ track days or periods? show tracking per periods. Create a new period if nothing
 ## Storage
 
 * save info online? on user's disk?
+* remove old logs when quota is reached! (reduceLogs not coded)
 
 ## Correct javascript?
-
-* is `=== undefined` the right way to check for the object existence? It seems to work.
 
 * Is storing the logs in an object the best way? It seems cumbersome to declare a new object for the date and a new object for the host everytime
