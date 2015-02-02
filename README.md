@@ -30,3 +30,17 @@ track days or periods? show tracking per periods. Create a new period if nothing
 * log every **5 minutes** so if firefox is closed only a few minutes might have been lost
 
 > **CLOSE**: Event emitted when a window is closed. You can't always rely on receiving the close event for every open window. In particular, if the user quits the browser then it's possible that your add-on will be unloaded before all windows are closed.
+
+# To Do List
+
+## Extract real domain
+
+* remove subdomain in get_host function
+
+## Graphs
+
+* make beautiful graphs
+
+## Save all this info somewhere
+
+* save info online? on user's disk?
