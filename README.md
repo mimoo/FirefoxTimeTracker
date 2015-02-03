@@ -24,13 +24,19 @@ Whenever Firefox is not in the foreground nothing will get logged. The plugin al
 
 # To Do List
 
+## URGENT
+
+* idling stops logging if user doesn't move his mouse or touch his keyboard for more than 2 minutes. How do we avoid this if he is watching a youtube video for example. Solutions? Add a whitelist (youtube, dailymotion...) or/and increase the time before idling.
+* remove subdomain in get_host function
+
+## UI
+
 * better icon
 * display quick view of logs when hovering the icon
-* remove subdomain in get_host function
 
 ## SYNC
 
-* sync the logs with firefox sync (easy)
+* sync the logs with firefox sync ([easy?](http://stackoverflow.com/questions/23318396/firefox-sdk-simple-storage-and-firefox-sync))
 
 ## track days?
 
@@ -38,7 +44,6 @@ The plugin actually tracks periods starting and stopping at midnight. I am think
 
 ## Track time correctly
 
-* detect when firefox is closing and log before it closes
 * do we really need to save every 5 seconds? -> maybe we should stop this and only save when we switch tab.
 
 ## Graphs
@@ -54,7 +59,3 @@ The plugin actually tracks periods starting and stopping at midnight. I am think
 ## Correct javascript?
 
 * Is storing the logs in an object the best way? It seems cumbersome to declare a new object for the date and a new object for the host everytime
-
-## Dected when browser is in foreground
-
-Maybe the "active" var is not correctly handled. Check for "foreground" here: http://mxr.mozilla.org/mozilla-central/source/mobile/android/chrome/content/browser.js#5445
