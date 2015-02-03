@@ -33,24 +33,24 @@ track days or periods? show tracking per periods. Create a new period if nothing
 
 # To Do List
 
+* better icon
+* display quick view of logs when hovering the icon
+* remove subdomain in get_host function
+
 ## Track time correctly
 
 * detect when firefox is closing and log before it closes
 * do we really need to save every 5 seconds? -> maybe we should stop this and only save when we switch tab.
 
-## Extract real domain
-
-* remove subdomain in get_host function
-
 ## Graphs
 
 * make beautiful graphs
-* the graph page shouldn't be logged..
 .
 ## Storage
 
 * save info online? on user's disk?
 * remove old logs when quota is reached! (reduceLogs not coded)
+* when a new day is created, reduce the list of the previous day (so we should keep a track of what was the "previous day")
 
 ## Correct javascript?
 
