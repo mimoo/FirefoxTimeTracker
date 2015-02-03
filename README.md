@@ -4,18 +4,27 @@ I always thought I could reduce the amount of time slacking if I could track my 
 
 # How to use it?
 
-**THIS IS A WORK IN PROGRESS. NOTHING IS WORKING. PLEASE COME BACK LATER**
+Open the file `FirefoxTimeTracker.xpi` with Firefox (`Ctrl+O`).
+
+Remember to come back here often to check if the plugin has been updated. It is still a beta but it works.
+
+You will see a "firefox" icon (for the moment): 
+
+![firefoxtimetracker](http://cryptologie.net/upload/firefox1.PNG)
+
+Clicking on it will bring you to a new page displaying you basic statistics on your day
+
+![firefox time tracker](http://cryptologie.net/upload/firefox1.PNG)
 
 # The thinking behind it
 
 ## track days?
 
-track days or periods? show tracking per periods. Create a new period if nothing has been logged in 6 hours? multiple periods can exist in a day (coz some ppl will log the morning before work and the night after work)... mmm, hard problem to tackle. Create algorithm to guess when the person is sleeping according to the day and to how long firefox has been opened. For example, the end of a period can be until 6am, the start of a period is always starting from 6am.
+The plugin actually tracks periods starting and stopping at midnight. I am thinking of changing that to 6 or 7am.
 
 ## what not to log?
 
-* stop logging when we are not looking at firefox
-* stop logging if we are inactive for too long (we might not be looking at firefox anymore). How can we now we've been inactive for too long? Mouse has no movements + keyboard inaction > 5 minutes is a good one.
+Whenever Firefox is not in the foreground nothing will get logged. The plugin also monitor for mouse movement and keys being pressed, if none of them are for more than 2 minutes then the user is assumed inactive and we stop logging.
 
 # Note on the code
 
