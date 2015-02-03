@@ -14,7 +14,7 @@ You will see a "firefox" icon (for the moment):
 
 Clicking on it will bring you to a new page displaying you basic statistics on your day
 
-![firefox time tracker](http://cryptologie.net/upload/firefox1.PNG)
+![firefox time tracker](http://cryptologie.net/upload/firefox2.PNG)
 
 # The thinking behind it
 
