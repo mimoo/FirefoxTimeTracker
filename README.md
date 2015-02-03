@@ -1,6 +1,6 @@
 # FirefoxTimeTracker
 
-I always thought I could reduce the amount of time slacking if I could track my time on facebook, reddit, hackernews... like I track my calories intake to reduce my weight. I couldn't find a good firefox plugin for that so I decided to make one.
+I always thought I could reduce the amount of time slacking if I could track my time on facebook, reddit, hackernews... like  tracking calories intake to reduce weight. I couldn't find a good firefox plugin for that so I decided to make one.
 
 # How to use it?
 
