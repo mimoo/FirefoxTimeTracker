@@ -56,11 +56,6 @@ track days or periods? show tracking per periods. Create a new period if nothing
 
 * Is storing the logs in an object the best way? It seems cumbersome to declare a new object for the date and a new object for the host everytime
 
-## Detect inactivity
-
-the plugin should stop logging if the user has been on the same page for more than 5 minutes without moving his mouse or hitting any keys. **I can't seem to capture mousemove or keydown since I can't use "document" or "window"**.  
-So right now I'm considering the user idled if the page stays open more than 5 minutes.  
-
 ## Dected when browser is in foreground
 
 Maybe the "active" var is not correctly handled. Check for "foreground" here: http://mxr.mozilla.org/mozilla-central/source/mobile/android/chrome/content/browser.js#5445
