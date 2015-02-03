@@ -18,33 +18,23 @@ Clicking on it will bring you to a new page displaying you basic statistics on y
 
 # The thinking behind it
 
-## track days?
-
-The plugin actually tracks periods starting and stopping at midnight. I am thinking of changing that to 6 or 7am.
-
 ## what not to log?
 
-Whenever Firefox is not in the foreground nothing will get logged. The plugin also monitor for mouse movement and keys being pressed, if none of them are for more than 2 minutes then the user is assumed inactive and we stop logging.
-
-# Note on the code
-
-## How to know if firefox is active with Firefox SDK API?
-
-* active = true by default
-* if a window is closed stop logging (set active to false)
-* if a window is open, log current_tab (set active to true)
-
-## How to log before firefox closes
-
-* log every **5 minutes** so if firefox is closed only a few minutes might have been lost
-
-> **CLOSE**: Event emitted when a window is closed. You can't always rely on receiving the close event for every open window. In particular, if the user quits the browser then it's possible that your add-on will be unloaded before all windows are closed.
+Whenever Firefox is not in the foreground nothing will get logged. The plugin also monitor for mouse movement and keys being pressed, if none of them are actively used for more than 2 minutes then the user is assumed inactive and we stop logging.
 
 # To Do List
 
 * better icon
 * display quick view of logs when hovering the icon
 * remove subdomain in get_host function
+
+## SYNC
+
+* sync the logs with firefox sync (easy)
+
+## track days?
+
+The plugin actually tracks periods starting and stopping at midnight. I am thinking of changing that to 6 or 7am.
 
 ## Track time correctly
 
