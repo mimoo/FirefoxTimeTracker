@@ -39,19 +39,59 @@ data = sortable.slice(0, table_max_elements)
 
 // display table
 for(var key in data) {
-	$('#today tbody').append('<tr><td>'+Math.ceil(data[key][1]*100/total)+'%</td><td>'+data[key][0]+'</td><td>'+sec2time(data[key][1])+'</td></tr>')
+	data[key][2] = Math.ceil(data[key][1]*100/total)
+	$('#today tbody').append('<tr><td>'+data[key][2]+'%</td><td>'+data[key][0]+'</td><td>'+sec2time(data[key][1])+'</td></tr>')
 }
 
 /////////////////////////////////////////////
 // TODAY PIE GRAPH
 ////////////////////////////////////////////
-/*
-$.plot('#today_pie', data, {
-    series: {
-        pie: {
-            innerRadius: 0.5,
-            show: true
-        }
-    }
-});
-*/
+
+// create data object
+
+var data_today = []
+
+for(var key in data) {
+	data_today.push({
+		value: data[key][2],
+		label: data[key][0],
+        highlight: "#FFC870",
+        color: "#FDB45C"
+	})
+}
+
+var options = {
+    //Boolean - Whether we should show a stroke on each segment
+    segmentShowStroke : true,
+
+    //String - The colour of each segment stroke
+    segmentStrokeColor : "#fff",
+
+    //Number - The width of each segment stroke
+    segmentStrokeWidth : 2,
+
+    //Number - The percentage of the chart that we cut out of the middle
+    percentageInnerCutout : 50, // This is 0 for Pie charts
+
+    //Number - Amount of animation steps
+    animationSteps : 100,
+
+    //String - Animation easing effect
+    animationEasing : "easeOutBounce",
+
+    //Boolean - Whether we animate the rotation of the Doughnut
+    animateRotate : true,
+
+    //Boolean - Whether we animate scaling the Doughnut from the centre
+    animateScale : false,
+
+    //String - A legend template
+    legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
+
+}
+
+
+// Chart.js
+var ctx = $("#today_pie").get(0).getContext("2d");
+
+var myDoughnutChart = new Chart(ctx).Doughnut(data_today, options);
