@@ -24,10 +24,6 @@ Whenever Firefox is not in the foreground nothing will get logged. The plugin al
 
 # To Do List
 
-## URGENT
-
-* remove subdomain in get_host function
-
 ## UI
 
 * better icon
