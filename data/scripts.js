@@ -130,13 +130,13 @@ var data = yesterday[1]
 // display table & get info
 for(var key in data.slice(0, table_max_elements)) {
 	// %
-	data[key][2] = Math.ceil(data[key][1]*100/yesterday[0o])
+	data[key][2] = Math.ceil(data[key][1]*100/yesterday[0])
 	// display
 	$('#yesterday tbody').append('<tr><td>'+data[key][2]+'%</td><td>'+data[key][0]+'</td><td>'+sec2time(data[key][1])+'</td></tr>')
 }
 
 // display total time
-$("#yesterday_total").text(sec2time(yesterday[0o]))
+$("#yesterday_total").text(sec2time(yesterday[0]))
 
 
 /////////////////////////////////////////////
@@ -180,6 +180,7 @@ for(date in self.options.logs) {
 			month[key] += self.options.logs[date][key]
 	}
 }
+console.log(self.options.logs)
 
 // sort array
 var month_object = sort(month).slice(0, table_max_elements)
@@ -240,8 +241,6 @@ for (last_month; last_month <= now; last_month.setDate(last_month.getDate() + 1)
 	else
 		data.push(sec2str(self.options.logs[date][label]))
 }
-
-console.log(data)
 
 // create object
 principal['data'] = data
