@@ -130,10 +130,14 @@ var data = yesterday[1]
 // display table & get info
 for(var key in data.slice(0, table_max_elements)) {
 	// %
-	data[key][2] = Math.ceil(data[key][1]*100/total)
+	data[key][2] = Math.ceil(data[key][1]*100/yesterday[0])
 	// display
 	$('#yesterday tbody').append('<tr><td>'+data[key][2]+'%</td><td>'+data[key][0]+'</td><td>'+sec2time(data[key][1])+'</td></tr>')
 }
+
+// display total time
+$("#yesterday_total").text(sec2time(yesterday[0]))
+
 
 /////////////////////////////////////////////
 // YESTERDAY PIE GRAPH
