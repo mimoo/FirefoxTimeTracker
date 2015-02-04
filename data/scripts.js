@@ -6,6 +6,13 @@ var table_max_elements = 20
 // HELPERS
 ////////////////////////////////////////////
 
+// get a nice date format
+function get_date(date) {
+	var today_date = date.toLocaleString()
+	return today_date.split(' ')[0]
+}
+
+// returns a nice string from int seconds
 function sec2time(seconds) {
 
 	// to hours
@@ -51,8 +58,7 @@ function sort(logs) {
 ////////////////////////////////////////////
 
 // init
-var today_date = new Date().toLocaleString()
-today_date = today_date.split(' ')[0]
+var today_date = get_date(new Date())
 
 // create sorted array
 var today = sort(self.options.logs[today_date])
@@ -111,11 +117,9 @@ var myDoughnutChart = new Chart(ctx).Doughnut(data_today, options);
 ////////////////////////////////////////////
 
 // init
-
 var yesterday = new Date()
 yesterday.setDate(yesterday.getDate() - 1);
-var yesterday_date = yesterday.toLocaleString()
-yesterday_date = yesterday_date.split(' ')[0]
+var yesterday_date = get_date(yesterday)
 
 // create sorted array
 yesterday = sort(self.options.logs[yesterday_date])
@@ -155,46 +159,145 @@ var myDoughnutChart = new Chart(ctx).Doughnut(data_yesterday, options);
 
 
 /////////////////////////////////////////////
-// LAST 7 DAYS GRAPH
+// MONTH NUMBERS
 ////////////////////////////////////////////
 
-/*
-var week = {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
-    datasets: [
-        {
-            label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.2)",
-            strokeColor: "rgba(220,220,220,1)",
-            pointColor: "rgba(220,220,220,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220,220,220,1)",
-            data: [65, 59, 80, 81, 56, 55, 40]
-        },
-        {
-            label: "My Second dataset",
-            fillColor: "rgba(151,187,205,0.2)",
-            strokeColor: "rgba(151,187,205,1)",
-            pointColor: "rgba(151,187,205,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(151,187,205,1)",
-            data: [28, 48, 40, 19, 86, 27, 90]
-        }
-    ]
+// create big object for this month
+var month = {}
+for(date in self.options.logs) {
+	// break if not the same month
+	if(date.split('/')[1] != today_date.split('/')[1])
+		break
+
+	for(key in self.options.logs[date]){
+		if(!month[key])
+			month[key] = self.options.logs[date][key]
+		else
+			month[key] += self.options.logs[date][key]
+	}
 }
 
-week_datas = []
-
-for(var date in self.options.logs) {
-	// create sorted array
-	var today = sort(self.options.logs[date])
-	var data = today[1]
-
-	// fill object
-	week_datas.push({
-		label: ""
-	})
+// sort array
+var month_object = sort(month).slice(0, table_max_elements)
+var month_data = month_object[1]
+var total = month_object[0]
+// display table & get info
+for(var key in month_data) {
+	// %
+	month_data[key][2] = Math.ceil(month_data[key][1]*100/total)
+	// display
+	$('#month tbody').append('<tr><td>'+month_data[key][2]+'%</td><td>'+month_data[key][0]+'</td><td>'+sec2time(month_data[key][1])+'</td></tr>')
 }
-*/
+
+// display total time
+$("#month_total").text(sec2time(total))
+
+/////////////////////////////////////////////
+// MONTH GRAPH
+////////////////////////////////////////////
+
+// function helper
+
+function sec2str(sec) {
+	hours = Math.floor(sec / (60*60))
+	minutes = Math.floor(sec / 60) % 60
+	return hours * 100 + minutes
+}
+
+// init
+data = []
+dates = []
+
+principal = {
+	fillColor: "rgba(220,220,220,0.2)",
+	strokeColor: "rgba(220,220,220,1)",
+	pointColor: "rgba(220,220,220,1)",
+	pointStrokeColor: "#fff",
+	pointHighlightFill: "#fff",
+	pointHighlightStroke: "rgba(220,220,220,1)"
+}
+
+// get most visited website
+label = month_data[0][0]
+principal['label'] = label
+
+// loop over day of month
+var last_month = new Date()
+last_month.setDate(1)
+var now = new Date(Date.now())
+
+for (last_month; last_month <= now; last_month.setDate(last_month.getDate() + 1)) {
+	// dates
+	date = get_date(last_month)
+	dates.push(date)
+	// logs
+	if(!self.options.logs[date] || !self.options.logs[date][label])
+		data.push(0)
+	else
+		data.push(sec2str(self.options.logs[date][label]))
+}
+
+console.log(data)
+
+// create object
+principal['data'] = data
+
+var chart = {
+    labels: dates,
+    datasets: [principal]
+}
+
+// options
+options = {
+
+    ///Boolean - Whether grid lines are shown across the chart
+    scaleShowGridLines : true,
+
+    //String - Colour of the grid lines
+    scaleGridLineColor : "rgba(0,0,0,.05)",
+
+    //Number - Width of the grid lines
+    scaleGridLineWidth : 1,
+
+    //Boolean - Whether to show horizontal lines (except X axis)
+    scaleShowHorizontalLines: true,
+
+    //Boolean - Whether to show vertical lines (except Y axis)
+    scaleShowVerticalLines: true,
+
+    //Boolean - Whether the line is curved between points
+    bezierCurve : true,
+
+    //Number - Tension of the bezier curve between points
+    bezierCurveTension : 0.4,
+
+    //Boolean - Whether to show a dot for each point
+    pointDot : true,
+
+    //Number - Radius of each point dot in pixels
+    pointDotRadius : 4,
+
+    //Number - Pixel width of point dot stroke
+    pointDotStrokeWidth : 1,
+
+    //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+    pointHitDetectionRadius : 20,
+
+    //Boolean - Whether to show a stroke for datasets
+    datasetStroke : true,
+
+    //Number - Pixel width of dataset stroke
+    datasetStrokeWidth : 2,
+
+    //Boolean - Whether to fill the dataset with a colour
+    datasetFill : true,
+
+    //String - A legend template
+    legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].lineColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+
+};
+
+
+// draw
+var ctx = $("#month_graph").get(0).getContext("2d")
+var myLineChart = new Chart(ctx).Line(chart, options)
