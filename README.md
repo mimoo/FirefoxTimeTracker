@@ -1,6 +1,6 @@
 # FirefoxTimeTracker
 
-I always thought I could reduce the amount of time slacking if I could track my time on facebook, reddit, hackernews... like I track my calories intake to reduce my weight. I couldn't find a good firefox plugin for that so I decided to make one.
+I always thought I could reduce the amount of time slacking if I could track my time on facebook, reddit, hackernews... like  tracking calories intake to reduce weight. I couldn't find a good firefox plugin for that so I decided to make one.
 
 # How to use it?
 
@@ -59,3 +59,7 @@ The plugin actually tracks periods starting and stopping at midnight. I am think
 ## Correct javascript?
 
 * Is storing the logs in an object the best way? It seems cumbersome to declare a new object for the date and a new object for the host everytime
+
+* should I destroy the idle.js I inject in every page? http://stackoverflow.com/questions/16791900/inject-css-in-firefox-add-on-sdk
+
+* why doesn't jquery.flot.js works...
